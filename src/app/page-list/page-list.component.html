@@ -1,0 +1,34 @@
+<table
+  *ngIf="pageList?.length; else noResult"
+  class="table table-bordered m-3"
+  [border]="1"
+>
+  <thead>
+    <tr>
+      <th class="p-2">#</th>
+      <th class="p-2">ID</th>
+      <th class="p-2">Name</th>
+      <th class="p-2">Ref</th>
+      <th class="p-2">Route</th>
+      <th class="p-2">Content</th>
+      <th class="p-2">URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let page of pageList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ page.ID }}</td>
+      <td>{{ page.Name }}</td>
+      <td>{{ page.Ref }}</td>
+      <td>{{ page.Route }}</td>
+      <td>{{ page.Content }}</td>
+      <td>
+        <a href="{{ page.URL }}">{{ page.URL }}</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noResult>
+  <p>No Result from the API</p>
+</ng-template>
