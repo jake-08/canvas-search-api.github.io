@@ -3,21 +3,41 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DocumentObject } from '../models/documents';
 import { PageObject } from '../models/page';
+import { CastObject } from '../models/cast';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  apiUrl = 'https://onepathsuperinvest.com.au/api/search?q=easy&type=doc';
   constructor(private http: HttpClient) {}
 
-  getDocuments(url: string, query: string): Observable<DocumentObject> {
-    const endpoint = url + '/api/search?q=' + query + '&type=doc&dps=100';
+  getDocuments(
+    url: string,
+    keyword: string,
+    pageSize: string,
+    pageNo: string
+  ): Observable<DocumentObject> {
+    const endpoint = `${url}/api/search?${keyword}&type=doc&dps=${pageSize}&dp=${pageNo}`;
     return this.http.get<DocumentObject>(endpoint);
   }
 
-  getPages(url: string, query: string): Observable<PageObject> {
-    const endpoint = url + '/api/search?q=' + query + '&type=page&pps=100';
+  getPages(
+    url: string,
+    keyword: string,
+    pageSize: string,
+    pageNo: string
+  ): Observable<PageObject> {
+    const endpoint = `${url}/api/search?${keyword}type=page&pps=${pageSize}&pp=${pageNo}`;
     return this.http.get<PageObject>(endpoint);
+  }
+
+  getCasts(
+    url: string,
+    keyword: string,
+    pageSize: string,
+    pageNo: string
+  ): Observable<CastObject> {
+    const endpoint = `${url}/api/search?${keyword}type=cast&cps=${pageSize}&cp=${pageNo}`;
+    return this.http.get<CastObject>(endpoint);
   }
 }

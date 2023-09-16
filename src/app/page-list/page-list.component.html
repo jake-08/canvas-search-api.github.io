@@ -1,17 +1,13 @@
-<table
-  *ngIf="pageList?.length; else noResult"
-  class="table table-bordered m-3"
-  [border]="1"
->
+<table *ngIf="pageList?.length; else noResult">
   <thead>
     <tr>
-      <th class="p-2">#</th>
-      <th class="p-2">ID</th>
-      <th class="p-2">Name</th>
-      <th class="p-2">Ref</th>
-      <th class="p-2">Route</th>
-      <th class="p-2">Content</th>
-      <th class="p-2">URL</th>
+      <th>#</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Ref</th>
+      <th>Route</th>
+      <th>Content</th>
+      <th>URL</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +19,7 @@
       <td>{{ page.Route }}</td>
       <td>{{ page.Content }}</td>
       <td>
-        <a href="{{ page.URL }}">{{ page.URL }}</a>
+        <a href="{{ page.URL }}" target="_blank">{{ page.URL }}</a>
       </td>
     </tr>
   </tbody>

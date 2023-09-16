@@ -1,0 +1,52 @@
+<table *ngIf="castList?.length; else noResult">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>ID</th>
+      <th>Type</th>
+      <th>Title</th>
+      <th>Brief</th>
+      <th>Content</th>
+      <th>Summary</th>
+      <th>LinkUrl</th>
+      <th>FileUrl</th>
+      <th>ImageLink</th>
+      <th>PublishedOn</th>
+      <th>CreatedOn</th>
+      <th>Categories</th>
+      <th>CategoriesList</th>
+      <th>Tags</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cast of castList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ cast.ID }}</td>
+      <td>{{ cast.Type }}</td>
+      <td>{{ cast.Title }}</td>
+      <td>{{ cast.Brief }}</td>
+      <td>{{ cast.Content }}</td>
+      <td>{{ cast.Summary }}</td>
+      <td>
+        <a href="{{ cast.LinkUrl }}" target="_blank">{{ cast.LinkUrl }}</a>
+      </td>
+      <td>
+        <a href="{{ cast.FileUrl }}" target="_blank">{{ cast.FileUrl }}</a>
+      </td>
+      <td>
+        <a href="{{ cast.ImageLink }}" target="_blank">{{ cast.ImageLink }}</a>
+      </td>
+      <td>{{ cast.PublishedOn | date : "dd/MM/yy HH:mm" }}</td>
+      <td>{{ cast.CreatedOn | date : "dd/MM/yy HH:mm" }}</td>
+      <td>{{ cast.Categories }}</td>
+      <td>{{ cast.CategoriesList }}</td>
+      <td>{{ cast.Tags }}</td>
+      <td>{{ cast.Reference }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noResult>
+  <p>No Result from the API</p>
+</ng-template>

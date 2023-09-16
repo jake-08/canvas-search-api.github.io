@@ -1,0 +1,25 @@
+mat-form-field + mat-form-field {
+  margin-right: 10px;
+}
+
+.mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.canvas-color {
+  color: #7d3d82;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.pt-4 {
+  padding-top: 4rem;
+}

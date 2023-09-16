@@ -1,34 +1,30 @@
-<table
-  *ngIf="documentList?.length; else noResult"
-  class="table table-bordered m-3"
-  [border]="1"
->
+<table *ngIf="documentList?.length; else noResult">
   <thead>
     <tr>
-      <th class="p-2">#</th>
-      <th class="p-2">ID</th>
-      <th class="p-2">Name</th>
-      <th class="p-2">UpdatedDate</th>
-      <th class="p-2">CreatedDate</th>
-      <th class="p-2">Categories</th>
-      <th class="p-2">Extension</th>
-      <th class="p-2">Description</th>
-      <th class="p-2">UpdatedBy</th>
-      <th class="p-2">Code</th>
+      <th>#</th>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Categories</th>
+      <th>Extension</th>
+      <th>UpdatedDate</th>
+      <th>CreatedDate</th>
+      <th>UpdatedBy</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let document of documentList; let i = index">
       <td>{{ i + 1 }}</td>
       <td>{{ document.ID }}</td>
+      <td>{{ document.Code }}</td>
       <td>{{ document.Name }}</td>
-      <td>{{ document.UpdatedDate | date : "dd/MM/yy HH:mm" }}</td>
-      <td>{{ document.CreatedDate | date : "dd/MM/yy HH:mm" }}</td>
+      <td>{{ document.Description }}</td>
       <td>{{ document.Categories }}</td>
       <td>{{ document.Extension }}</td>
-      <td>{{ document.Description }}</td>
+      <td>{{ document.UpdatedDate | date : "dd/MM/yy HH:mm" }}</td>
+      <td>{{ document.CreatedDate | date : "dd/MM/yy HH:mm" }}</td>
       <td>{{ document.UpdatedBy }}</td>
-      <td>{{ document.Code }}</td>
     </tr>
   </tbody>
 </table>

@@ -1,26 +1,37 @@
 import { Component } from '@angular/core';
 import { PageList } from '../models/page';
 import { ApiService } from '../services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-list',
   templateUrl: './page-list.component.html',
-  styleUrls: ['./page-list.component.css'],
 })
 export class PageListComponent {
-  constructor(private ApiService: ApiService) {}
+  constructor(private ApiService: ApiService, private route: ActivatedRoute) {}
 
+  url: string;
+  keyword: string;
+  pageSize: string;
+  pageNo: string;
   pageList: PageList[];
 
   ngOnInit(): void {
-    const url = 'https://onepathsuperinvest.com.au';
-    const query = 'transact';
-    this.ApiService.getPages(url, query).subscribe((pageObject) => {
+    this.url = this.route.snapshot.queryParamMap.get('url');
+    this.keyword = this.route.snapshot.queryParamMap.get('keyword');
+    this.pageSize = this.route.snapshot.queryParamMap.get('pageSize');
+    this.pageNo = this.route.snapshot.queryParamMap.get('pageNo');
+
+    this.ApiService.getPages(
+      this.url,
+      this.keyword,
+      this.pageSize,
+      this.pageNo
+    ).subscribe((pageObject) => {
       this.pageList = pageObject.Pages.list.map((page) => {
-        page.URL = [url, page.URL].join("");
+        page.URL = [this.url, page.URL].join('');
         return page;
       });
-      console.log(this.pageList);
     });
   }
 }
