@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
         })
       )
     );
-    
+
     window.open(tableUrl, '_blank');
   }
 
